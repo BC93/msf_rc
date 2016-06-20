@@ -10,65 +10,118 @@
 <ruby>
 
 nse_dir = '/root/projects/offsec/msf/nse/'
-# Automatically gets & sets ip address using kernel routing table to extranet (aka gmail.com, port 80)
 
+
+# Automatically gets & sets ip address using kernel routing table to extranet (aka gmail.com, port 80)
 subnet = %x`python -c "import socket; s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM); s.connect(('gmail.com',80));  host = s.getsockname()[0]; s.close(); g = host.split('.'); subnet = '{}.{}.{}.1/24'.format(g[0],g[1], g[2]); print subnet"`
+
 print_line("#{subnet}")
+
 #run_single("setg RHOSTS #{subnet}")
+
 run_single("db_nmap -T5 #{subnet} -v50")
 
 begin 
 
 framework.db.hosts.each do |host|
+
     xhost = host.address
-    run_single("db_nmap --top-ports=500 -PR -PA -T5 -F #{xhost}")
+
+    # TODO: make this section enumerate open ports that were missed during discovery; syn, ack, tcp, udp, cookie echo , etc only miss crazy ports.
+    run_single("db_nmap --top-ports=500 -PR -sV -PA -T5 -F #{xhost}")
+    
+    run_single("db_nmap --top-ports=500 -SR -sV -SA -T5 -F #{xhost}")
+
     run_single("mkdir /root/offsec/output/#{host.address}")
+
     host.services.each do |serv|
-    # TODO:  add cups, irc, ldap, couchdb, mysql, mssql, oracle sql, psql, apache service enumerations, as well as dirb for web services
+
+    # TODO:  add  couchdb,apache , dirb
+
         next if not serv.host
+
         next if (serv.state !=Msf::ServiceState::Open)
+
         next if not(
+
             serv.name =/citrix/ or
+
             serv.name =serv.name =serv.name =~/cups/ or
+
             serv.name =serv.name =serv.name =~/discovery/ or
+
             serv.name =serv.name =serv.name =~/dns/ or
+
             serv.name =serv.name =serv.name =~/ftp/ or
+
             serv.name =serv.name =serv.name =~/http/ or
+
             serv.name =serv.name =serv.name =~/imap/ or
+
             serv.name =serv.name =serv.name =~/irc/ or
+
             serv.name =serv.name =serv.name =~/ldap/ or
+
             serv.name =serv.name =serv.name =~/mongo/ or
+
             serv.name =serv.name =serv.name =~/mysql/ or
+
             serv.name =serv.name =serv.name =~/ncp/ or
+
             serv.name =serv.name =serv.name =~/netbus/ or
+
             serv.name =serv.name =serv.name =~/nfs/ or
+
             serv.name =serv.name =serv.name =~/oracle/ or
+
             serv.name =serv.name =serv.name =~/pnp/ or
+
             serv.name =serv.name =serv.name =~/pop3/ or
+
             serv.name =serv.name =serv.name =~/rdp/ or
+
             serv.name =serv.name =serv.name =~/smb/ or
+
             serv.name =serv.name =serv.name =~/smtp/ or
+
             serv.name =serv.name =serv.name =~/snmp/ or
+
             serv.name =serv.name =serv.name =~/sql/ or
+
             serv.name =serv.name =serv.name =~/ssh/ or
+
             serv.name =serv.name =serv.name =~/ssl/ or
+
             serv.name =serv.name =serv.name =~/vnc/ 
+
             )
 
         xport = serv.proto 
+
         xname = serv.name
+
         oname = host.os_name
+
         print_line("Enumerating #{xname} on port #{xport} for #{xhost}")
+
         t1 = Thread.new {
+
             print_line("Running Thread 1")
+
             run_single("db_nmap -sV -A -p #{xport} --script='#{nse_dir}' #{xhost} -vv -n -T3  ")
+
             }
+
         t1.join
 
    #     end
+
     end # host.services.each
+
 end # framework.db.hosts.each
+
 end
+
 </ruby>
 
 
