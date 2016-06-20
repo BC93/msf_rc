@@ -10,27 +10,23 @@
 <ruby>
 
 nse_dir = '/root/projects/offsec/msf/nse/'
-
 # Automatically gets & sets ip address using kernel routing table to extranet (aka gmail.com, port 80)
 
 subnet = %x`python -c "import socket; s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM); s.connect(('gmail.com',80));  host = s.getsockname()[0]; s.close(); g = host.split('.'); subnet = '{}.{}.{}.1/24'.format(g[0],g[1], g[2]); print subnet"`
 print_line("#{subnet}")
-#run_single("setg RHOSTS #{xhost}")
-print_line("Running: db_nmap --top-ports=10 --script=run_discover --script-args=newtargets -n  --open -T5 -Pn -v #{subnet} -oN /root/offsec/output/discovery")
-run_single("db_nmap --top-ports=10 --script=run_discover --script-args=newtargets -n  --open -T5 -Pn -v #{xhost} -oN /root/offsec/output/discovery")
+#run_single("setg RHOSTS #{subnet}")
+run_single("db_nmap -T5 #{subnet}")
 
 begin 
 
 framework.db.hosts.each do |host|
     xhost = host.address
     run_single("db_nmap --top-ports=500 -PR -PA -T5 -F #{xhost}")
-    run_single("mkdir /root/offsec/output/#{xhost}")
+    run_single("mkdir /root/offsec/output/#{host.address}")
     host.services.each do |serv|
     # TODO:  add cups, irc, ldap, couchdb, mysql, mssql, oracle sql, psql, apache service enumerations, as well as dirb for web services
         next if not serv.host
         next if (serv.state !=Msf::ServiceState::Open)
-// currently  Available nse's 
-
         next if not(
             serv.name =/citrix/ or
             serv.name =serv.name =serv.name =~/cups/ or
@@ -59,20 +55,18 @@ framework.db.hosts.each do |host|
             serv.name =serv.name =serv.name =~/vnc/ 
             )
 
-        next if not(serv.name =~/ssh/ or        xport = serv.port.to_i
-        xprot = serv.proto 
+        xport = serv.proto 
         xname = serv.name
         oname = host.os_name
-        if (xname =~/ssh/)
-            print_line("Enumerating #{xname} on port #{xport} for #{xhost}")
-            t1 = Thread.new {
-                    print_line("Running Thread 1")
-                    run_single("db_nmap -sV -A -p #{xport} --script='#{nse_dir}' #{xhost} -vv -n -T3  -o /root/offsec/output/#{xhost}/#{xname}")
-                    }
-            t1.join
+        print_line("Enumerating #{xname} on port #{xport} for #{xhost}")
+        t1 = Thread.new {
+            print_line("Running Thread 1")
+            run_single("db_nmap -sV -A -p #{xport} --script='#{nse_dir}' #{xhost} -vv -n -T3  ")
+            }
+        t1.join
 
-        end
-           end # host.services.each
+   #     end
+    end # host.services.each
 end # framework.db.hosts.each
 end
 </ruby>
