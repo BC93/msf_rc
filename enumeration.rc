@@ -15,7 +15,7 @@ nse_dir = '/root/projects/offsec/msf/nse/'
 subnet = %x`python -c "import socket; s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM); s.connect(('gmail.com',80));  host = s.getsockname()[0]; s.close(); g = host.split('.'); subnet = '{}.{}.{}.1/24'.format(g[0],g[1], g[2]); print subnet"`
 print_line("#{subnet}")
 #run_single("setg RHOSTS #{subnet}")
-run_single("db_nmap -T5 #{subnet}")
+run_single("db_nmap -T5 #{subnet} -v50")
 
 begin 
 
