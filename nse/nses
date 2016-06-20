@@ -1,0 +1,346 @@
+cp /usr/share/nmap/scripts//
+cp /usr/share/nmap/scripts//
+cp /usr/share/nmap/scripts/address-info.nse ./discovery/
+cp /usr/share/nmap/scripts/auth-owners.nse ./discovery/
+cp /usr/share/nmap/scripts/banner.nse ./discovery/
+cp /usr/share/nmap/scripts/broadcast-ataoe-discover.nse ./discovery/
+cp /usr/share/nmap/scripts/broadcast-avahi-dos.nse ./discovery/
+cp /usr/share/nmap/scripts/broadcast-bjnp-discover.nse ./discovery/
+cp /usr/share/nmap/scripts/broadcast-db2-discover.nse ./discovery/
+cp /usr/share/nmap/scripts/broadcast-dhcp6-discover.nse ./discovery/
+cp /usr/share/nmap/scripts/broadcast-dhcp-discover.nse ./discovery/
+cp /usr/share/nmap/scripts/broadcast-dns-service-discovery.nse ./discovery ./dns/
+cp /usr/share/nmap/scripts/broadcast-dropbox-listener.nse ./discovery/
+cp /usr/share/nmap/scripts/broadcast-eigrp-discovery.nse ./discovery/
+cp /usr/share/nmap/scripts/broadcast-igmp-discovery.nse ./discovery/
+cp /usr/share/nmap/scripts/broadcast-listener.nse ./discovery/
+cp /usr/share/nmap/scripts/broadcast-ms-sql-discover.nse ./discovery ./sql/
+cp /usr/share/nmap/scripts/broadcast-netbios-master-browser.nse ./discovery/
+cp /usr/share/nmap/scripts/broadcast-networker-discover.nse ./discovery/
+cp /usr/share/nmap/scripts/broadcast-novell-locate.nse ./discovery/
+cp /usr/share/nmap/scripts/broadcast-pc-anywhere.nse ./discovery/
+cp /usr/share/nmap/scripts/broadcast-pc-duo.nse ./discovery/
+cp /usr/share/nmap/scripts/broadcast-pim-discovery.nse ./discovery/
+cp /usr/share/nmap/scripts/broadcast-ping.nse ./discovery/
+cp /usr/share/nmap/scripts/broadcast-pppoe-discover.nse ./discovery/
+cp /usr/share/nmap/scripts/broadcast-rip-discover.nse ./discovery/
+cp /usr/share/nmap/scripts/broadcast-ripng-discover.nse ./discovery/
+cp /usr/share/nmap/scripts/broadcast-sybase-asa-discover.nse ./discovery/
+cp /usr/share/nmap/scripts/broadcast-tellstick-discover.nse ./discovery/
+cp /usr/share/nmap/scripts/broadcast-upnp-info.nse ./discovery ./pnp/
+cp /usr/share/nmap/scripts/broadcast-versant-locate.nse ./discovery/
+cp /usr/share/nmap/scripts/broadcast-wake-on-lan.nse ./discovery/
+cp /usr/share/nmap/scripts/broadcast-wpad-discover.nse ./discovery/
+cp /usr/share/nmap/scripts/broadcast-wsdd-discover.nse ./discovery/
+cp /usr/share/nmap/scripts/broadcast-xdmcp-discover.nse ./discovery/
+cp /usr/share/nmap/scripts/cccam-version.nse/
+cp /usr/share/nmap/scripts/citrix-enum-apps.nse ./citrix ./citrix/
+cp /usr/share/nmap/scripts/citrix-enum-apps-xml.nse ./citrix/
+cp /usr/share/nmap/scripts/citrix-enum-servers.nse ./citrix/
+cp /usr/share/nmap/scripts/citrix-enum-servers-xml.nse ./citrix/
+cp /usr/share/nmap/scripts/couchdb-databases.nse/
+cp /usr/share/nmap/scripts/couchdb-stats.nse/
+cp /usr/share/nmap/scripts/cups-info.nse ./cups/
+cp /usr/share/nmap/scripts/cups-queue-info.nse ./cups/
+cp /usr/share/nmap/scripts/daap-get-library.nse/
+cp /usr/share/nmap/scripts/daytime.nse/
+cp /usr/share/nmap/scripts/db2-das-info.nse/
+cp /usr/share/nmap/scripts/dhcp-discover.nse/
+cp /usr/share/nmap/scripts/dict-info.nse/
+cp /usr/share/nmap/scripts/distcc-cve2004-2687.nse/
+cp /usr/share/nmap/scripts/dns-blacklist.nse ./dns/
+cp /usr/share/nmap/scripts/dns-cache-snoop.nse ./dns/
+cp /usr/share/nmap/scripts/dns-check-zone.nse ./dns/
+cp /usr/share/nmap/scripts/dns-client-subnet-scan.nse ./dns/
+cp /usr/share/nmap/scripts/dns-fuzz.nse ./dns/
+cp /usr/share/nmap/scripts/dns-ip6-arpa-scan.nse ./dns/
+cp /usr/share/nmap/scripts/dns-nsec3-enum.nse ./dns/
+cp /usr/share/nmap/scripts/dns-nsec-enum.nse ./dns/
+cp /usr/share/nmap/scripts/dns-nsid.nse ./dns/
+cp /usr/share/nmap/scripts/dns-random-srcport.nse ./dns/
+cp /usr/share/nmap/scripts/dns-random-txid.nse ./dns/
+cp /usr/share/nmap/scripts/dns-recursion.nse ./dns/
+cp /usr/share/nmap/scripts/dns-service-discovery.nse ./dns/
+cp /usr/share/nmap/scripts/dns-srv-enum.nse ./dns/
+cp /usr/share/nmap/scripts/dns-update.nse ./dns/
+cp /usr/share/nmap/scripts/dns-zeustracker.nse ./dns/
+cp /usr/share/nmap/scripts/dns-zone-transfer.nse ./dns/
+cp /usr/share/nmap/scripts/domcon-cmd.nse/
+cp /usr/share/nmap/scripts/fcrdns.nse ./dns/
+cp /usr/share/nmap/scripts/finger.nse/
+cp /usr/share/nmap/scripts/firewalk.nse/
+cp /usr/share/nmap/scripts/firewall-bypass.nse/
+cp /usr/share/nmap/scripts/ftp-anon.nse ./ftp/
+cp /usr/share/nmap/scripts/ftp-bounce.nse ./ftp/
+cp /usr/share/nmap/scripts/ftp-libopie.nse ./ftp/
+cp /usr/share/nmap/scripts/ftp-proftpd-backdoor.nse ./ftp/
+cp /usr/share/nmap/scripts/ftp-vsftpd-backdoor.nse ./ftp/
+cp /usr/share/nmap/scripts/ftp-vuln-cve2010-4221.nse ./ftp/
+cp /usr/share/nmap/scripts/hddtemp-info.nse/
+cp /usr/share/nmap/scripts/http-adobe-coldfusion-apsa1301.nse ./http/
+cp /usr/share/nmap/scripts/http-affiliate-id.nse ./http/
+cp /usr/share/nmap/scripts/http-apache-negotiation.nse ./http/
+cp /usr/share/nmap/scripts/http-auth-finder.nse ./http/
+cp /usr/share/nmap/scripts/http-auth.nse ./http/
+cp /usr/share/nmap/scripts/http-avaya-ipoffice-users.nse ./http/
+cp /usr/share/nmap/scripts/http-awstatstotals-exec.nse ./http/
+cp /usr/share/nmap/scripts/http-axis2-dir-traversal.nse ./http/
+cp /usr/share/nmap/scripts/http-backup-finder.nse ./http/
+cp /usr/share/nmap/scripts/http-barracuda-dir-traversal.nse ./http/
+cp /usr/share/nmap/scripts/http-cakephp-version.nse ./http/
+cp /usr/share/nmap/scripts/http-chrono.nse ./http/
+cp /usr/share/nmap/scripts/http-cisco-anyconnect.nse ./http/
+cp /usr/share/nmap/scripts/http-coldfusion-subzero.nse ./http/
+cp /usr/share/nmap/scripts/http-comments-displayer.nse ./http/
+cp /usr/share/nmap/scripts/http-config-backup.nse ./http/
+cp /usr/share/nmap/scripts/http-cors.nse ./http/
+cp /usr/share/nmap/scripts/http-crossdomainxml.nse ./http/
+cp /usr/share/nmap/scripts/http-csrf.nse ./http/
+cp /usr/share/nmap/scripts/http-date.nse ./http/
+cp /usr/share/nmap/scripts/http-default-accounts.nse ./http/
+cp /usr/share/nmap/scripts/http-devframework.nse ./http/
+cp /usr/share/nmap/scripts/http-dlink-backdoor.nse ./http/
+cp /usr/share/nmap/scripts/http-dombased-xss.nse ./http/
+cp /usr/share/nmap/scripts/http-domino-enum-passwords.nse ./http/
+cp /usr/share/nmap/scripts/http-drupal-enum-users.nse ./http/
+cp /usr/share/nmap/scripts/http-drupal-modules.nse ./http/
+cp /usr/share/nmap/scripts/http-email-harvest.nse ./http/
+cp /usr/share/nmap/scripts/http-enum.nse ./http/
+cp /usr/share/nmap/scripts/http-errors.nse ./http/
+cp /usr/share/nmap/scripts/http-exif-spider.nse ./http/
+cp /usr/share/nmap/scripts/http-favicon.nse ./http/
+cp /usr/share/nmap/scripts/http-feed.nse ./http/
+cp /usr/share/nmap/scripts/http-fileupload-exploiter.nse ./http/
+cp /usr/share/nmap/scripts/http-form-fuzzer.nse ./http/
+cp /usr/share/nmap/scripts/http-frontpage-login.nse ./http/
+cp /usr/share/nmap/scripts/http-generator.nse ./http/
+cp /usr/share/nmap/scripts/http-git.nse ./http/
+cp /usr/share/nmap/scripts/http-gitweb-projects-enum.nse ./http/
+cp /usr/share/nmap/scripts/http-google-malware.nse ./http/
+cp /usr/share/nmap/scripts/http-grep.nse ./http/
+cp /usr/share/nmap/scripts/http-headers.nse ./http/
+cp /usr/share/nmap/scripts/http-huawei-hg5xx-vuln.nse ./http/
+cp /usr/share/nmap/scripts/http-icloud-findmyiphone.nse ./http/
+cp /usr/share/nmap/scripts/http-icloud-sendmsg.nse ./http/
+cp /usr/share/nmap/scripts/http-iis-webdav-vuln.nse ./http/
+cp /usr/share/nmap/scripts/http-litespeed-sourcecode-download.nse ./http/
+cp /usr/share/nmap/scripts/http-majordomo2-dir-traversal.nse ./http/
+cp /usr/share/nmap/scripts/http-malware-host.nse ./http/
+cp /usr/share/nmap/scripts/http-methods.nse ./http/
+cp /usr/share/nmap/scripts/http-method-tamper.nse ./http/
+cp /usr/share/nmap/scripts/http-mobileversion-checker.nse ./http/
+cp /usr/share/nmap/scripts/http-ntlm-info.nse ./http/
+cp /usr/share/nmap/scripts/http-open-proxy.nse ./http/
+cp /usr/share/nmap/scripts/http-open-redirect.nse ./http/
+cp /usr/share/nmap/scripts/http-passwd.nse ./http/
+cp /usr/share/nmap/scripts/http-phpmyadmin-dir-traversal.nse ./http/
+cp /usr/share/nmap/scripts/http-phpself-xss.nse ./http/
+cp /usr/share/nmap/scripts/http-php-version.nse ./http/
+cp /usr/share/nmap/scripts/http-put.nse ./http/
+cp /usr/share/nmap/scripts/http-qnap-nas-info.nse ./http/
+cp /usr/share/nmap/scripts/http-referer-checker.nse ./http/
+cp /usr/share/nmap/scripts/http-rfi-spider.nse ./http/
+cp /usr/share/nmap/scripts/http-robots.txt.nse ./http/
+cp /usr/share/nmap/scripts/http-robtex-reverse-ip.nse ./http/
+cp /usr/share/nmap/scripts/http-robtex-shared-ns.nse ./http/
+cp /usr/share/nmap/scripts/http-server-header.nse ./http/
+cp /usr/share/nmap/scripts/http-shellshock.nse ./http/
+cp /usr/share/nmap/scripts/http-sitemap-generator.nse ./http/
+cp /usr/share/nmap/scripts/http-slowloris-check.nse ./http/
+cp /usr/share/nmap/scripts/http-slowloris.nse ./http/
+cp /usr/share/nmap/scripts/http-sql-injection.nse ./http
+cp /usr/share/nmap/scripts/http-stored-xss.nse ./http/
+cp /usr/share/nmap/scripts/http-title.nse ./http/
+cp /usr/share/nmap/scripts/http-tplink-dir-traversal.nse ./http/
+cp /usr/share/nmap/scripts/http-trace.nse ./http/
+cp /usr/share/nmap/scripts/http-traceroute.nse ./http/
+cp /usr/share/nmap/scripts/http-unsafe-output-escaping.nse ./http/
+cp /usr/share/nmap/scripts/http-useragent-tester.nse ./http/
+cp /usr/share/nmap/scripts/http-userdir-enum.nse ./http/
+cp /usr/share/nmap/scripts/http-vhosts.nse ./http/
+cp /usr/share/nmap/scripts/http-virustotal.nse ./http/
+cp /usr/share/nmap/scripts/http-vlcstreamer-ls.nse ./http/
+cp /usr/share/nmap/scripts/http-vmware-path-vuln.nse ./http/
+cp /usr/share/nmap/scripts/http-vuln-cve2006-3392.nse ./http/
+cp /usr/share/nmap/scripts/http-vuln-cve2009-3960.nse ./http/
+cp /usr/share/nmap/scripts/http-vuln-cve2010-0738.nse ./http/
+cp /usr/share/nmap/scripts/http-vuln-cve2010-2861.nse ./http/
+cp /usr/share/nmap/scripts/http-vuln-cve2011-3192.nse ./http/
+cp /usr/share/nmap/scripts/http-vuln-cve2011-3368.nse ./http/
+cp /usr/share/nmap/scripts/http-vuln-cve2012-1823.nse ./http/
+cp /usr/share/nmap/scripts/http-vuln-cve2013-0156.nse ./http/
+cp /usr/share/nmap/scripts/http-vuln-cve2013-7091.nse ./http/
+cp /usr/share/nmap/scripts/http-vuln-cve2014-2126.nse ./http/
+cp /usr/share/nmap/scripts/http-vuln-cve2014-2127.nse ./http/
+cp /usr/share/nmap/scripts/http-vuln-cve2014-2128.nse ./http/
+cp /usr/share/nmap/scripts/http-vuln-cve2014-2129.nse ./http/
+cp /usr/share/nmap/scripts/http-vuln-cve2015-1427.nse ./http/
+cp /usr/share/nmap/scripts/http-vuln-cve2015-1635.nse ./http/
+cp /usr/share/nmap/scripts/http-vuln-misfortune-cookie.nse ./http/
+cp /usr/share/nmap/scripts/http-vuln-wnr1000-creds.nse ./http/
+cp /usr/share/nmap/scripts/http-waf-detect.nse ./http/
+cp /usr/share/nmap/scripts/http-waf-fingerprint.nse ./http/
+cp /usr/share/nmap/scripts/http-wordpress-enum.nse ./http/
+cp /usr/share/nmap/scripts/http-wordpress-users.nse ./http/
+cp /usr/share/nmap/scripts/http-xssed.nse ./http/
+cp /usr/share/nmap/scripts/ike-version.nse/
+cp /usr/share/nmap/scripts/imap-capabilities.nse ./imap/
+cp /usr/share/nmap/scripts/ip-forwarding.nse/
+cp /usr/share/nmap/scripts/irc-info.nse ./irc/
+cp /usr/share/nmap/scripts/irc-unrealircd-backdoor.nse ./irc/
+cp /usr/share/nmap/scripts/krb5-enum-users.nse ./ldap/
+cp /usr/share/nmap/scripts/ldap-novell-getpass.nse ./ldap/
+cp /usr/share/nmap/scripts/ldap-rootdse.nse ./ldap/
+cp /usr/share/nmap/scripts/ldap-search.nse ./ldap/
+cp /usr/share/nmap/scripts/lexmark-config.nse/
+cp /usr/share/nmap/scripts/llmnr-resolve.nse/
+cp /usr/share/nmap/scripts/lltd-discovery.nse/
+cp /usr/share/nmap/scripts/membase-http-info.nse ./http/
+cp /usr/share/nmap/scripts/memcached-info.nse/
+cp /usr/share/nmap/scripts/metasploit-info.nse/
+cp /usr/share/nmap/scripts/mmouse-exec.nse/
+cp /usr/share/nmap/scripts/modbus-discover.nse/
+cp /usr/share/nmap/scripts/mongodb-databases.nse ./mongo/
+cp /usr/share/nmap/scripts/mongodb-info.nse ./mongo/
+cp /usr/share/nmap/scripts/ms-sql-config.nse ./sql/
+cp /usr/share/nmap/scripts/ms-sql-dac.nse ./sql/
+cp /usr/share/nmap/scripts/ms-sql-dump-hashes.nse ./sql/
+cp /usr/share/nmap/scripts/ms-sql-empty-password.nse ./sql/
+cp /usr/share/nmap/scripts/ms-sql-hasdbaccess.nse ./sql/
+cp /usr/share/nmap/scripts/ms-sql-info.nse ./sql/
+cp /usr/share/nmap/scripts/ms-sql-query.nse ./sql/
+cp /usr/share/nmap/scripts/ms-sql-tables.nse ./sql/
+cp /usr/share/nmap/scripts/ms-sql-xp-cmdshell.nse ./sql/
+cp /usr/share/nmap/scripts/mysql-audit.nse ./mysql ./sql/
+cp /usr/share/nmap/scripts/mysql-databases.nse ./mysql ./sql/
+cp /usr/share/nmap/scripts/mysql-dump-hashes.nse ./mysql ./sql/
+cp /usr/share/nmap/scripts/mysql-empty-password.nse ./mysql ./sql/
+cp /usr/share/nmap/scripts/mysql-enum.nse ./mysql ./sql/
+cp /usr/share/nmap/scripts/mysql-info.nse ./mysql ./sql/
+cp /usr/share/nmap/scripts/mysql-query.nse ./mysql ./sql/
+cp /usr/share/nmap/scripts/mysql-users.nse ./mysql ./sql/
+cp /usr/share/nmap/scripts/mysql-variables.nse ./mysql ./sql/
+cp /usr/share/nmap/scripts/mysql-vuln-cve2012-2122.nse ./mysql ./sql/
+cp /usr/share/nmap/scripts/nat-pmp-info.nse ./discovery/
+cp /usr/share/nmap/scripts/nat-pmp-mapport.nse ./discovery/
+cp /usr/share/nmap/scripts/nbstat.nse/
+cp /usr/share/nmap/scripts/ncp-enum-users.nse ./ncp/
+cp /usr/share/nmap/scripts/ncp-serverinfo.nse ./ncp/
+cp /usr/share/nmap/scripts/ndmp-fs-info.nse/
+cp /usr/share/nmap/scripts/ndmp-version.nse/
+cp /usr/share/nmap/scripts/netbus-auth-bypass.nse ./netbus/
+cp /usr/share/nmap/scripts/netbus-info.nse ./netbus/
+cp /usr/share/nmap/scripts/netbus-version.nse ./netbus/
+cp /usr/share/nmap/scripts/nfs-ls.nse ./nfs/
+cp /usr/share/nmap/scripts/nfs-showmount.nse ./nfs/
+cp /usr/share/nmap/scripts/nfs-statfs.nse ./nfs/
+cp /usr/share/nmap/scripts/nrpe-enum.nse/
+cp /usr/share/nmap/scripts/ntp-info.nse/
+cp /usr/share/nmap/scripts/ntp-monlist.nse/
+cp /usr/share/nmap/scripts/omp2-enum-targets.nse/
+cp /usr/share/nmap/scripts/omron-info.nse/
+cp /usr/share/nmap/scripts/openlookup-info.nse/
+cp /usr/share/nmap/scripts/oracle-enum-users.nse ./oracle/
+cp /usr/share/nmap/scripts/ovs-agent-version.nse/
+cp /usr/share/nmap/scripts/p2p-conficker.nse/
+cp /usr/share/nmap/scripts/path-mtu.nse/
+cp /usr/share/nmap/scripts/pjl-ready-message.nse/
+cp /usr/share/nmap/scripts/pop3-capabilities.nse ./pop3/
+cp /usr/share/nmap/scripts/pptp-version.nse/
+cp /usr/share/nmap/scripts/qconn-exec.nse/
+cp /usr/share/nmap/scripts/qscan.nse/
+cp /usr/share/nmap/scripts/quake1-info.nse/
+cp /usr/share/nmap/scripts/quake3-info.nse/
+cp /usr/share/nmap/scripts/quake3-master-getservers.nse/
+cp /usr/share/nmap/scripts/rdp-enum-encryption.nse ./rdp/
+cp /usr/share/nmap/scripts/rdp-vuln-ms12-020.nse ./rdp/
+cp /usr/share/nmap/scripts/realvnc-auth-bypass.nse ./vnc/
+cp /usr/share/nmap/scripts/redis-info.nse/
+cp /usr/share/nmap/scripts/resolveall.nse/
+cp /usr/share/nmap/scripts/reverse-index.nse/
+cp /usr/share/nmap/scripts/rfc868-time.nse/
+cp /usr/share/nmap/scripts/riak-http-info.nse ./http/
+cp /usr/share/nmap/scripts/rmi-dumpregistry.nse/
+cp /usr/share/nmap/scripts/rmi-vuln-classloader.nse ./ssl/
+cp /usr/share/nmap/scripts/rpcap-info.nse/
+cp /usr/share/nmap/scripts/rpc-grind.nse/
+cp /usr/share/nmap/scripts/rpcinfo.nse/
+cp /usr/share/nmap/scripts/rsync-list-modules.nse/
+cp /usr/share/nmap/scripts/rtsp-methods.nse/
+cp /usr/share/nmap/scripts/s7-info.nse/
+cp /usr/share/nmap/scripts/samba-vuln-cve-2012-1182.nse/
+cp /usr/share/nmap/scripts/script.db/
+cp /usr/share/nmap/scripts/servicetags.nse/
+cp /usr/share/nmap/scripts/sip-call-spoof.nse/
+cp /usr/share/nmap/scripts/sip-enum-users.nse/
+cp /usr/share/nmap/scripts/sip-methods.nse/
+cp /usr/share/nmap/scripts/skypev2-version.nse/
+cp /usr/share/nmap/scripts/smb-check-vulns.nse ./smb/
+cp /usr/share/nmap/scripts/smb-enum-domains.nse ./smb/
+cp /usr/share/nmap/scripts/smb-enum-groups.nse ./smb/
+cp /usr/share/nmap/scripts/smb-enum-processes.nse ./smb/
+cp /usr/share/nmap/scripts/smb-enum-sessions.nse ./smb/
+cp /usr/share/nmap/scripts/smb-enum-shares.nse ./smb/
+cp /usr/share/nmap/scripts/smb-enum-users.nse ./smb/
+cp /usr/share/nmap/scripts/smb-flood.nse ./smb/
+cp /usr/share/nmap/scripts/smb-ls.nse ./smb/
+cp /usr/share/nmap/scripts/smb-mbenum.nse ./smb/
+cp /usr/share/nmap/scripts/smb-os-discovery.nse ./smb/
+cp /usr/share/nmap/scripts/smb-print-text.nse ./smb/
+cp /usr/share/nmap/scripts/smb-psexec.nse ./smb/
+cp /usr/share/nmap/scripts/smb-security-mode.nse ./smb/
+cp /usr/share/nmap/scripts/smb-server-stats.nse ./smb/
+cp /usr/share/nmap/scripts/smb-system-info.nse ./smb/
+cp /usr/share/nmap/scripts/smbv2-enabled.nse ./smb/
+cp /usr/share/nmap/scripts/smb-vuln-ms10-054.nse ./smb/
+cp /usr/share/nmap/scripts/smb-vuln-ms10-061.nse ./smb/
+cp /usr/share/nmap/scripts/smtp-commands.nse ./smtp/
+cp /usr/share/nmap/scripts/smtp-enum-users.nse ./smtp/
+cp /usr/share/nmap/scripts/smtp-open-relay.nse ./smtp/
+cp /usr/share/nmap/scripts/smtp-strangeport.nse ./smtp/
+cp /usr/share/nmap/scripts/smtp-vuln-cve2010-4344.nse ./smtp/
+cp /usr/share/nmap/scripts/smtp-vuln-cve2011-1720.nse ./smtp/
+cp /usr/share/nmap/scripts/smtp-vuln-cve2011-1764.nse ./smtp/
+cp /usr/share/nmap/scripts/sniffer-detect.nse ./discovery/
+cp /usr/share/nmap/scripts/snmp-hh3c-logins.nse ./snmp/
+cp /usr/share/nmap/scripts/snmp-info.nse ./snmp/
+cp /usr/share/nmap/scripts/snmp-interfaces.nse ./snmp/
+cp /usr/share/nmap/scripts/snmp-ios-config.nse ./snmp/
+cp /usr/share/nmap/scripts/snmp-netstat.nse ./snmp/
+cp /usr/share/nmap/scripts/snmp-processes.nse ./snmp/
+cp /usr/share/nmap/scripts/snmp-sysdescr.nse ./snmp/
+cp /usr/share/nmap/scripts/snmp-win32-services.nse ./snmp/
+cp /usr/share/nmap/scripts/snmp-win32-shares.nse ./snmp/
+cp /usr/share/nmap/scripts/snmp-win32-software.nse ./snmp/
+cp /usr/share/nmap/scripts/snmp-win32-users.nse ./snmp/
+cp /usr/share/nmap/scripts/socks-auth-info.nse/
+cp /usr/share/nmap/scripts/socks-open-proxy.nse/
+cp /usr/share/nmap/scripts/ssh2-enum-algos.nse ./ssh/
+cp /usr/share/nmap/scripts/ssh-hostkey.nse ./ssh/
+cp /usr/share/nmap/scripts/sshv1.nse ./ssh/
+cp /usr/share/nmap/scripts/ssl-ccs-injection.nse ./ssl/
+cp /usr/share/nmap/scripts/ssl-cert.nse ./ssl/
+cp /usr/share/nmap/scripts/ssl-date.nse ./ssl/
+cp /usr/share/nmap/scripts/ssl-enum-ciphers.nse ./ssl/
+cp /usr/share/nmap/scripts/ssl-google-cert-catalog.nse ./ssl/
+cp /usr/share/nmap/scripts/ssl-heartbleed.nse ./ssl/
+cp /usr/share/nmap/scripts/ssl-known-key.nse ./ssl/
+cp /usr/share/nmap/scripts/ssl-poodle.nse ./ssl/
+cp /usr/share/nmap/scripts/sslv2.nse ./ssl/
+cp /usr/share/nmap/scripts/sstp-discover.nse/
+cp /usr/share/nmap/scripts/stun-info.nse/
+cp /usr/share/nmap/scripts/stun-version.nse/
+cp /usr/share/nmap/scripts/targets-asn.nse/
+cp /usr/share/nmap/scripts/targets-sniffer.nse ./discovery/
+cp /usr/share/nmap/scripts/targets-traceroute.nse/
+cp /usr/share/nmap/scripts/telnet-encryption.nse/
+cp /usr/share/nmap/scripts/tftp-enum.nse ./ftp/
+cp /usr/share/nmap/scripts/tls-nextprotoneg.nse/
+cp /usr/share/nmap/scripts/upnp-info.nse ./pnp/
+cp /usr/share/nmap/scripts/vnc-info.nse ./vnc/
+cp /usr/share/nmap/scripts/vuze-dht-info.nse/
+cp /usr/share/nmap/scripts/wdb-version.nse/
+cp /usr/share/nmap/scripts/weblogic-t3-info.nse/
+cp /usr/share/nmap/scripts/wsdd-discover.nse/
+cp /usr/share/nmap/scripts/x11-access.nse/
+cp /usr/share/nmap/scripts/xmpp-info.nse ./http/

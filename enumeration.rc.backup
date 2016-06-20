@@ -1,0 +1,95 @@
+# Author: Brian Coffey
+# Resource script to automate the scanning / enumeration in msfconsole for OSCP, since you can't use metasploit's modules on the exam...
+# but they don't say anything about using it's beautiful database & framework ;)
+
+
+
+# Change xhost to whatever subnet you need.
+
+
+<ruby>
+
+# Automatically gets & sets ip address using kernel routing table to extranet (aka gmail.com, port 80)
+
+subnet = %x`python -c "import socket; s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM); s.connect(('gmail.com',80));  host = s.getsockname()[0]; s.close(); g = host.split('.'); subnet = '{}.{}.{}.1/24'.format(g[0],g[1], g[2]); print subnet"`
+print_line("#{subnet}")
+#run_single("setg RHOSTS #{xhost}")
+print_line("Running: db_nmap --top-ports=10 --script=run_discover --script-args=newtargets -n  --open -T5 -Pn -v #{subnet} -oN /root/offsec/output/discovery")
+run_single("db_nmap --top-ports=10 --script=run_discover --script-args=newtargets -n  --open -T5 -Pn -v #{xhost} -oN /root/offsec/output/discovery")
+
+begin 
+
+framework.db.hosts.each do |host|
+    xhost = host.address
+    run_single("db_nmap --top-ports=500 -PR -PA -T5 -F #{xhost}")
+    run_single("mkdir /root/offsec/output/#{xhost}")
+    host.services.each do |serv|
+    # TODO:  add cups, irc, ldap, couchdb, mysql, mssql, oracle sql, psql, apache service enumerations, as well as dirb for web services
+        next if not serv.host
+        next if (serv.state !=Msf::ServiceState::Open)
+        next if not(serv.name =~/ssh/ or
+            serv.name =~/smtp/ or
+            serv.name =~/snmp/ or
+            serv.name =~/smb/ or
+            serv.name =~/http/ or
+            serv.name =~/ftp/ or
+            serv.name =~/ssl/)
+        xport = serv.port.to_i
+        xprot = serv.proto 
+        xname = serv.name
+        oname = host.os_name
+        if (xname =~/ssh/)
+            print_line("Enumerating #{xname} on port #{xport} for #{xhost}")
+            t1 = Thread.new {
+                    print_line("Running Thread 1")
+                    run_single("db_nmap -sV -A -p #{xport} --script='*ssh*' #{xhost} -vv -n -T3  -o /root/offsec/output/#{xhost}/#{xname}")
+                    }
+            t1.join
+        elsif (xname =~/smtp/)
+            print_line("Enumerating #{xname} on port #{xport} for #{xhost}")
+            t2 = Thread.new {
+                    run_single("db_nmap -sV -A -p #{xport} --script='*smtp*' #{xhost} -vv -n -T3  -o /root/offsec/output/#{xhost}/#{xname}")
+                    print_line("running thread 2")
+                    }
+            t2.join
+        elsif (xname =~/snmp/)
+            t3 = Thread.new { 
+            print_line("Enumerating #{xname} on port #{xport} for #{xhost}")
+            run_single("db_nmap -sV -A -sU#{xport} -PU#{xport} -p #{xport} --script='*snmp*' #{xhost} -vv -n -T3  -o /root/offsec/output/#{xhost}/#{xname}")
+            }
+            t3.join
+        elsif (xname =~/smb/)
+            t4 = Thread.new { 
+                print_line("Enumerating #{xname} on port #{xport} for #{xhost}")
+                run_single("db_nmap -sV -A -p #{xport} -PR#{xport} -PA#{xport} --script='*smb*' #{xhost} -vv -n -T3  -o /root/offsec/output/#{xhost}/#{xname}")
+                }
+                t4.join
+        elsif (xname =~/http/)
+            t5 = Thread.new {
+                print_line("Enumerating #{xname} on port #{xport} for #{xhost}")
+                run_single("db_nmap -sV -A -p #{xport}  -PR#{xport} -PA#{xport} --script='*http*' #{xhost} -vv -n -T3  -o /root/offsec/output/#{xhost}/#{xname}")
+                }
+                t5.join
+        elsif (xname =~/ftp/)
+            t6 = Thread.new {
+                print_line("Enumerating #{xname} on port #{xport} for #{xhost}")
+                run_single("db_nmap -sV -A -p #{xport} --script='*ftp*' #{xhost} -PR#{xport} -PA#{xport} -vv -n -T3  -o /root/offsec/output/#{xhost}/#{xname}")
+                }
+                t6.join
+        else (xname =~/ssl/)
+            t7 = Thread.new {
+                print_line("Enumerating #{xname} on port #{xport} for #{xhost}")
+                run_single("db_nmap -sV -A -p #{xport} --script='*ssl*' #{xhost} -PR#{xport} -PA#{xport} -vv -n -T3  -o /root/offsec/output/#{xhost}/#{xname}")
+           }
+           t7.join
+
+        end
+           end # host.services.each
+end # framework.db.hosts.each
+end
+</ruby>
+
+
+
+
+   
