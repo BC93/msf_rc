@@ -29,7 +29,14 @@ framework.db.hosts.each do |host|
 
     # TODO: make this section enumerate open ports that were missed during discovery; syn, ack, tcp, udp, cookie echo , etc only miss crazy ports.
     run_single("db_nmap --top-ports=500 -PR -sV -PA -T5 -F #{xhost}")
-    
+    run_single("db_nmap -n -sS -sT -T5 -v50 -sA #{xhost} --top-ports=5000")
+    run_single("db_nmap -n -T5 -v50  -sV --version-intensity 9 --port-ratio .8 #{xhost} -sM --top-ports=5000")
+    run_single("db_nmap -n -T5 -v50  -sV --version-intensity 9 --port-ratio .8 #{xhost} -sW --top-ports=5000")
+    run_single("db_nmap -n -T5 -v50  -sV --version-intensity 9 --port-ratio .8 #{xhost} -sU --top-ports=5000")
+    run_single("db_nmap -n -T5 -v50  -sV --version-intensity 9 --port-ratio .8 #{xhost} -sN -sF  --top-ports=5000")
+    run_single("db_nmap -n -T5 -v50  -sV --version-intensity 9 --port-ratio .8 #{xhost} -s0  --top-ports=5000")
+    run_single("db_nmap -n -T5 -v50  -sV --version-intensity 9 --port-ratio .8 #{xhost} -sZ  --top-ports=5000")
+    run_single("db_nmap -n -T5 -v50  -sV --version-intensity 9 --port-ratio .8 #{xhost} -sY  --top-ports=5000")
     run_single("db_nmap --top-ports=500 -SR -sV -SA -T5 -F #{xhost}")
 
     run_single("mkdir /root/offsec/output/#{host.address}")
@@ -109,8 +116,10 @@ framework.db.hosts.each do |host|
             print_line("Running Thread 1")
 
             run_single("db_nmap -sV -A -p #{xport} --script='#{nse_dir}' #{xhost} -vv -n -T3  ")
-
             }
+            # *FIXME fix
+
+
 
         t1.join
 
@@ -119,6 +128,13 @@ framework.db.hosts.each do |host|
     end # host.services.each
 
 end # framework.db.hosts.each
+
+#   Cleanup our services to only see 'Open' services, as thats all we're 
+# interested in ... if it's still 'closed' or 'filtered' we're not getting
+# in that way anyway.
+
+run_single("services -S closed -d")
+run_single("services -S filtered -d")
 
 end
 
