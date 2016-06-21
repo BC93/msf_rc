@@ -11,7 +11,7 @@
 
 nse_dir = '/root/projects/offsec/msf/nse/'
 
-
+# I'm more familiar with python, so I wrote this part in python.
 # Automatically gets & sets ip address using kernel routing table to extranet (aka gmail.com, port 80)
 subnet = %x`python -c "import socket; s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM); s.connect(('gmail.com',80));  host = s.getsockname()[0]; s.close(); g = host.split('.'); subnet = '{}.{}.{}.1/24'.format(g[0],g[1], g[2]); print subnet"`
 
@@ -19,7 +19,8 @@ print_line("#{subnet}")
 
 #run_single("setg RHOSTS #{subnet}")
 
-run_single("db_nmap -T5 #{subnet} -v50")
+# basic discovery, working on implementing a few of the discovery nses into this.
+#run_single("db_nmap --open  -T5 #{subnet} -v50")
 
 begin 
 
@@ -28,22 +29,45 @@ framework.db.hosts.each do |host|
     xhost = host.address
 
     # TODO: make this section enumerate open ports that were missed during discovery; syn, ack, tcp, udp, cookie echo , etc only miss crazy ports.
-    run_single("db_nmap --top-ports=500 -PR -sV -PA -T5 -F #{xhost}")
-    run_single("db_nmap -n -sS -sT -T5 -v50 -sA #{xhost} --top-ports=5000")
-    run_single("db_nmap -n -T5 -v50  -sV --version-intensity 9 --port-ratio .8 #{xhost} -sM --top-ports=5000")
-    run_single("db_nmap -n -T5 -v50  -sV --version-intensity 9 --port-ratio .8 #{xhost} -sW --top-ports=5000")
-    run_single("db_nmap -n -T5 -v50  -sV --version-intensity 9 --port-ratio .8 #{xhost} -sU --top-ports=5000")
-    run_single("db_nmap -n -T5 -v50  -sV --version-intensity 9 --port-ratio .8 #{xhost} -sN -sF  --top-ports=5000")
-    run_single("db_nmap -n -T5 -v50  -sV --version-intensity 9 --port-ratio .8 #{xhost} -s0  --top-ports=5000")
-    run_single("db_nmap -n -T5 -v50  -sV --version-intensity 9 --port-ratio .8 #{xhost} -sZ  --top-ports=5000")
-    run_single("db_nmap -n -T5 -v50  -sV --version-intensity 9 --port-ratio .8 #{xhost} -sY  --top-ports=5000")
-    run_single("db_nmap --top-ports=500 -SR -sV -SA -T5 -F #{xhost}")
+
+    # TODO: Look into threading for this part
+
+    # I use --open to only report hosts that are up
+    # --version-intensity *seems* to report the software version better and finds the
+    # version for more services -- I might just be crazy though.
+    # port-ratio -- for the most part i've noticed most services are running on default ports,
+    # and when I find services on unexpected ports I haven't had the greatest luck enumerating them
+    # anways. ( with a few exceptions. )
+    # This way i'm testing the top 80% of most common ports, if my understanding is wrong 
+    # please correct me.
+
+#    run_single("db_nmap --open  --top-ports=500 -PR -sV -PA -T5 -F #{xhost}")
+
+#    run_single("db_nmap --open  -n -sS -sT -T5 -v50 -sA #{xhost} --top-ports=5000")
+
+#    run_single("db_nmap --open  -n -T5 -v50  -sV --version-intensity 9 --port-ratio .8 #{xhost} -sM --top-ports=5000")
+
+#    run_single("db_nmap --open  -n -T5 -v50  -sV --version-intensity 9 --port-ratio .8 #{xhost} -sW --top-ports=5000")
+
+#    run_single("db_nmap --open  -n -T5 -v50  -sV --version-intensity 9 --port-ratio .8 #{xhost} -sU --top-ports=5000")
+
+#    run_single("db_nmap --open  -n -T5 -v50  -sV --version-intensity 9 --port-ratio .8 #{xhost} -sN -sF  --top-ports=5000")
+
+#    run_single("db_nmap --open  -n -T5 -v50  -sV --version-intensity 9 --port-ratio .8 #{xhost} -s0  --top-ports=5000")
+
+#    run_single("db_nmap --open  -n -T5 -v50  -sV --version-intensity 9 --port-ratio .8 #{xhost} -sZ  --top-ports=5000")
+
+#    run_single("db_nmap --open  -n -T5 -v50  -sV --version-intensity 9 --port-ratio .8 #{xhost} -sY  --top-ports=5000")
+
+#    run_single("db_nmap --open  --top-ports=500 -SR -sV -SA -T5 -F #{xhost}")
 
     run_single("mkdir /root/offsec/output/#{host.address}")
 
+    # TODO: Add a sleep function here to wait for the results of the port scans above -- after the threading has been implemented.
+
     host.services.each do |serv|
 
-    # TODO:  add  couchdb,apache , dirb
+    # TODO:  add  nse scans for the following services: couchdb,apache, $more?
 
         next if not serv.host
 
@@ -115,7 +139,7 @@ framework.db.hosts.each do |host|
 
             print_line("Running Thread 1")
 
-            run_single("db_nmap -sV -A -p #{xport} --script='#{nse_dir}' #{xhost} -vv -n -T3  ")
+            run_single("db_nmap --open  -sV -A -p #{xport} --script='#{nse_dir}#{xname}' #{xhost} -vv -n -T3  ")
             }
             # *FIXME fix
 
